@@ -9,6 +9,8 @@
 
 The goal of learn\_make is to …
 
+1.  [Cookbook](cookbook.html)
+
 <h4 align="center">
 
 **Code of Conduct**

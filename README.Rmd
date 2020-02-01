@@ -19,4 +19,6 @@ knitr::opts_chunk$set(
 
 The goal of learn_make is to ...
 
+1. [Cookbook](cookbook.html)
+
 `r add2pkg::add_disclaimer("Jiaxiang Li")`
