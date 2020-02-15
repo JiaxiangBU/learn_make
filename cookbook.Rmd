@@ -125,6 +125,18 @@ clean:
 	@rm -rf $(PKGNAME)_$(PKGVERS).tar.gz $(PKGNAME).Rcheck
 ```
 
+# 更新 R 项目
+
+直接可以再其他 git bash (RStudio里面的) 就可以更新了。
+或者说不需要打开 RStudio 项目直接用 make 去更新。
+
+
+```bash
+cd ../nCov2019_analysis
+make all
+```
+
+
 
 # 附录 {-}
 

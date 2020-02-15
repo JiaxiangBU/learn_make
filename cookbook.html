@@ -24,7 +24,7 @@
 <meta name="author" content="李家翔" />
 
 
-<meta name="date" content="2020-02-05" />
+<meta name="date" content="2020-02-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,6 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path=""><a href="#配置"><i class="fa fa-check"></i><b>1</b> 配置</a></li>
 <li class="chapter" data-level="2" data-path=""><a href="#示例"><i class="fa fa-check"></i><b>2</b> 示例</a></li>
 <li class="chapter" data-level="3" data-path=""><a href="#usethis-use_make"><i class="fa fa-check"></i><b>3</b> usethis use_make</a></li>
+<li class="chapter" data-level="4" data-path=""><a href="#更新-r-项目"><i class="fa fa-check"></i><b>4</b> 更新 R 项目</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#附录"><i class="fa fa-check"></i>附录</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#参考文献"><i class="fa fa-check"></i>参考文献</a></li>
 </ul>
@@ -154,7 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">make Cookbook</h1>
 <p class="author"><em>李家翔</em></p>
-<p class="date"><em>2020-02-05</em></p>
+<p class="date"><em>2020-02-15</em></p>
 </div>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -248,6 +249,13 @@ type <code>make all</code> to rerun the entire analysis, which consists of the p
 <a class="sourceLine" id="cb4-24" title="24"></a>
 <a class="sourceLine" id="cb4-25" title="25"><span class="ex">clean</span>:</a>
 <a class="sourceLine" id="cb4-26" title="26">    <span class="ex">@rm</span> -rf <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>_<span class="va">$(</span><span class="ex">PKGVERS</span><span class="va">)</span>.tar.gz <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>.Rcheck</a></code></pre></div>
+</div>
+<div id="更新-r-项目" class="section level1">
+<h1><span class="header-section-number">4</span> 更新 R 项目</h1>
+<p>直接可以再其他 git bash (RStudio里面的) 就可以更新了。
+或者说不需要打开 RStudio 项目直接用 make 去更新。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="bu">cd</span> ../nCov2019_analysis</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="fu">make</span> all</a></code></pre></div>
 </div>
 <div id="附录" class="section level1 unnumbered">
 <h1>附录</h1>
