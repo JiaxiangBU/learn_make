@@ -133,6 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path=""><a href="#示例"><i class="fa fa-check"></i><b>2</b> 示例</a></li>
 <li class="chapter" data-level="3" data-path=""><a href="#usethis-use_make"><i class="fa fa-check"></i><b>3</b> usethis use_make</a></li>
 <li class="chapter" data-level="4" data-path=""><a href="#更新-r-项目"><i class="fa fa-check"></i><b>4</b> 更新 R 项目</a></li>
+<li class="chapter" data-level="5" data-path=""><a href="#q-失效"><i class="fa fa-check"></i><b>5</b> q() 失效</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#附录"><i class="fa fa-check"></i>附录</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#参考文献"><i class="fa fa-check"></i>参考文献</a></li>
 </ul>
@@ -256,6 +257,10 @@ type <code>make all</code> to rerun the entire analysis, which consists of the p
 或者说不需要打开 RStudio 项目直接用 make 去更新。</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="bu">cd</span> ../nCov2019_analysis</a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="fu">make</span> all</a></code></pre></div>
+</div>
+<div id="q-失效" class="section level1">
+<h1><span class="header-section-number">5</span> q() 失效</h1>
+<p><code>Rscript -e "q(save = 'no')"</code>加在 make 里面没用，因为在 Bash 中，这是新开了一个进程，不影响当前的 RStudio。</p>
 </div>
 <div id="附录" class="section level1 unnumbered">
 <h1>附录</h1>

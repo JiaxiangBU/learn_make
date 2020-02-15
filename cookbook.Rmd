@@ -136,6 +136,10 @@ cd ../nCov2019_analysis
 make all
 ```
 
+# q() 失效
+
+`Rscript -e "q(save = 'no')"`加在 make 里面没用，因为在 Bash 中，这是新开了一个进程，不影响当前的 RStudio。
+
 
 
 # 附录 {-}

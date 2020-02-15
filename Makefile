@@ -1,4 +1,4 @@
-all: cookbook quit
+all: cookbook
 
 cookbook:
 
@@ -7,6 +7,3 @@ cookbook:
 readme:
 
 	Rscript analysis/build-readme.R
-
-quit:
-	Rscript -e "q(save = 'no')"
