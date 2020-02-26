@@ -140,7 +140,15 @@ make all
 
 `Rscript -e "q(save = 'no')"`加在 make 里面没用，因为在 Bash 中，这是新开了一个进程，不影响当前的 RStudio。
 
+# missing separator
 
+参考 https://blog.csdn.net/u010299133/article/details/83895299
+
+```bash
+Makefile:7: *** missing separator.  Stop.
+```
+
+在相应的行前tab键，很多时候可能是加了空格键。
 
 # 附录 {-}
 
