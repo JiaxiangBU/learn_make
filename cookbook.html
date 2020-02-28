@@ -24,7 +24,7 @@
 <meta name="author" content="李家翔" />
 
 
-<meta name="date" content="2020-02-26" />
+<meta name="date" content="2020-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -135,6 +135,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path=""><a href="#更新-r-项目"><i class="fa fa-check"></i><b>4</b> 更新 R 项目</a></li>
 <li class="chapter" data-level="5" data-path=""><a href="#q-失效"><i class="fa fa-check"></i><b>5</b> q() 失效</a></li>
 <li class="chapter" data-level="6" data-path=""><a href="#missing-separator"><i class="fa fa-check"></i><b>6</b> missing separator</a></li>
+<li class="chapter" data-level="7" data-path=""><a href="#处理乱码"><i class="fa fa-check"></i><b>7</b> 处理乱码</a></li>
+<li class="chapter" data-level="8" data-path=""><a href="#单独调用-make-命令测试"><i class="fa fa-check"></i><b>8</b> 单独调用 make 命令测试</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#附录"><i class="fa fa-check"></i>附录</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#参考文献"><i class="fa fa-check"></i>参考文献</a></li>
 </ul>
@@ -157,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">make Cookbook</h1>
 <p class="author"><em>李家翔</em></p>
-<p class="date"><em>2020-02-26</em></p>
+<p class="date"><em>2020-02-28</em></p>
 </div>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -268,6 +270,21 @@ type <code>make all</code> to rerun the entire analysis, which consists of the p
 <p>参考 <a href="https://blog.csdn.net/u010299133/article/details/83895299" class="uri">https://blog.csdn.net/u010299133/article/details/83895299</a></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">Makefile</span>:7: *** missing separator.  Stop.</a></code></pre></div>
 <p>在相应的行前tab键，很多时候可能是加了空格键。</p>
+</div>
+<div id="处理乱码" class="section level1">
+<h1><span class="header-section-number">7</span> 处理乱码</h1>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">RScript</span> code/data-validation.R</a></code></pre></div>
+<p>不要 <code>.R</code> 写文字，会乱码，用 <code>Rmd</code>。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="st">&quot;表结构是否发生变化，比如错行匹配</span><span class="ch">\n</span><span class="st">&quot;</span> <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="st">    </span><span class="kw">write_lines</span>(report_path, <span class="dt">append =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+</div>
+<div id="单独调用-make-命令测试" class="section level1">
+<h1><span class="header-section-number">8</span> 单独调用 make 命令测试</h1>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">test</span>:</a>
+<a class="sourceLine" id="cb9-2" title="2"></a>
+<a class="sourceLine" id="cb9-3" title="3">    <span class="ex">RScript</span> code/data-validation.R</a></code></pre></div>
+<p>一条条测试，这样比较快。
+这主要是一个思路问题。</p>
 </div>
 <div id="附录" class="section level1 unnumbered">
 <h1>附录</h1>

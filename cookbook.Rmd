@@ -150,6 +150,30 @@ Makefile:7: *** missing separator.  Stop.
 
 在相应的行前tab键，很多时候可能是加了空格键。
 
+# 处理乱码
+
+```bash
+RScript code/data-validation.R
+```
+
+不要 `.R` 写文字，会乱码，用 `Rmd`。
+
+```r
+"表结构是否发生变化，比如错行匹配\n" %>%
+    write_lines(report_path, append = TRUE)
+```
+
+# 单独调用 make 命令测试
+
+```bash
+test:
+
+	RScript code/data-validation.R
+```
+
+一条条测试，这样比较快。
+这主要是一个思路问题。
+
 # 附录 {-}
 
 # 参考文献 {-}
