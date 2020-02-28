@@ -137,7 +137,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path=""><a href="#missing-separator"><i class="fa fa-check"></i><b>6</b> missing separator</a></li>
 <li class="chapter" data-level="7" data-path=""><a href="#处理乱码"><i class="fa fa-check"></i><b>7</b> 处理乱码</a></li>
 <li class="chapter" data-level="8" data-path=""><a href="#单独调用-make-命令测试"><i class="fa fa-check"></i><b>8</b> 单独调用 make 命令测试</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#附录"><i class="fa fa-check"></i>附录</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#附录"><i class="fa fa-check"></i>附录</a><ul>
+<li class="chapter" data-level="8.1" data-path=""><a href="#示例-1"><i class="fa fa-check"></i><b>8.1</b> 示例</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path=""><a href="#参考文献"><i class="fa fa-check"></i>参考文献</a></li>
 </ul>
 
@@ -169,28 +171,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>相关问题提交到
 <a class="github-button" href="https://github.com/JiaxiangBU/tutoring2/issues" data-show-count="true" aria-label="Issue JiaxiangBU/tutoring on GitHub">Issue</a></li>
 </ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <div id="配置" class="section level1">
 <h1><span class="header-section-number">1</span> 配置</h1>
 <p>参考 <a href="https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows" class="uri">https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">bash</span>: make: command not found</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">bash</span>: make: command not found</a></code></pre></div>
 <p>Everything 查询 <code>make.exe</code>，发现在 <code>C:\Rtools\bin\make.exe</code>，先配置好环境变量就可以用了。</p>
 </div>
 <div id="示例" class="section level1">
 <h1><span class="header-section-number">2</span> 示例</h1>
 <p>参考 <a href="https://github.com/pavopax/gists/blob/master/makefile-quick-start.md" class="uri">https://github.com/pavopax/gists/blob/master/makefile-quick-start.md</a></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">all</span>: data process output</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="ex">data</span>:</a>
-<a class="sourceLine" id="cb2-4" title="4">        <span class="ex">Rscript</span> get_datasets.R</a>
-<a class="sourceLine" id="cb2-5" title="5">        <span class="ex">Rscript</span> get_extra_files.R</a>
-<a class="sourceLine" id="cb2-6" title="6">    </a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="ex">process</span>:</a>
-<a class="sourceLine" id="cb2-8" title="8">        <span class="ex">Rscript</span> process.R</a>
-<a class="sourceLine" id="cb2-9" title="9"></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="ex">output</span>:</a>
-<a class="sourceLine" id="cb2-11" title="11">        <span class="ex">Rscript</span> write_plots.R</a>
-<a class="sourceLine" id="cb2-12" title="12">        <span class="ex">Rscript</span> write_tables.R</a>
-<a class="sourceLine" id="cb2-13" title="13">        <span class="ex">python</span> app.py</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">all</span>: data process output</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="ex">data</span>:</a>
+<a class="sourceLine" id="cb3-4" title="4">        <span class="ex">Rscript</span> get_datasets.R</a>
+<a class="sourceLine" id="cb3-5" title="5">        <span class="ex">Rscript</span> get_extra_files.R</a>
+<a class="sourceLine" id="cb3-6" title="6">    </a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="ex">process</span>:</a>
+<a class="sourceLine" id="cb3-8" title="8">        <span class="ex">Rscript</span> process.R</a>
+<a class="sourceLine" id="cb3-9" title="9"></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="ex">output</span>:</a>
+<a class="sourceLine" id="cb3-11" title="11">        <span class="ex">Rscript</span> write_plots.R</a>
+<a class="sourceLine" id="cb3-12" title="12">        <span class="ex">Rscript</span> write_tables.R</a>
+<a class="sourceLine" id="cb3-13" title="13">        <span class="ex">python</span> app.py</a></code></pre></div>
 <blockquote>
 <p>type <code>make data</code> to run your “get data” scripts
 type <code>make output</code> to only run your “output” script(s)
@@ -198,28 +201,28 @@ type <code>make all</code> to rerun the entire analysis, which consists of the p
 <code>all</code>, <code>data</code>, <code>process</code>, <code>output</code>, etc are called “targets”</p>
 </blockquote>
 <p>参考 <a href="https://github.com/pavopax/gists/blob/master/assets/makefile-example-1.bash" class="uri">https://github.com/pavopax/gists/blob/master/assets/makefile-example-1.bash</a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">all</span>: clean data process</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="ex">clean</span>:</a>
-<a class="sourceLine" id="cb3-4" title="4">    <span class="fu">rm</span> -rf data</a>
-<a class="sourceLine" id="cb3-5" title="5">    <span class="fu">rm</span> -rf data.tar</a>
-<a class="sourceLine" id="cb3-6" title="6">    <span class="fu">rm</span> -rf data.tar.gz</a>
-<a class="sourceLine" id="cb3-7" title="7"></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="ex">data</span>:   clean</a>
-<a class="sourceLine" id="cb3-9" title="9">    <span class="fu">scp</span> user@unix:/file/location/data.tar.gz .</a>
-<a class="sourceLine" id="cb3-10" title="10">    <span class="fu">gunzip</span> data.tar.gz</a>
-<a class="sourceLine" id="cb3-11" title="11">    <span class="fu">tar</span> -xvf data.tar</a>
-<a class="sourceLine" id="cb3-12" title="12"></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="ex">process</span>:</a>
-<a class="sourceLine" id="cb3-14" title="14">    <span class="fu">mkdir</span> -p code/logs</a>
-<a class="sourceLine" id="cb3-15" title="15">    <span class="ex">Rscript</span> code/process.R</a>
-<a class="sourceLine" id="cb3-16" title="16"></a>
-<a class="sourceLine" id="cb3-17" title="17"><span class="ex">load</span>:</a>
-<a class="sourceLine" id="cb3-18" title="18">    <span class="ex">python</span> app.py</a>
-<a class="sourceLine" id="cb3-19" title="19"></a>
-<a class="sourceLine" id="cb3-20" title="20"><span class="ex">tweak</span>:</a>
-<a class="sourceLine" id="cb3-21" title="21">    <span class="fu">git</span> commit -m <span class="st">&#39;Tweak&#39;</span></a>
-<a class="sourceLine" id="cb3-22" title="22">    <span class="fu">git</span> push</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">all</span>: clean data process</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="ex">clean</span>:</a>
+<a class="sourceLine" id="cb4-4" title="4">    <span class="fu">rm</span> -rf data</a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="fu">rm</span> -rf data.tar</a>
+<a class="sourceLine" id="cb4-6" title="6">    <span class="fu">rm</span> -rf data.tar.gz</a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="ex">data</span>:   clean</a>
+<a class="sourceLine" id="cb4-9" title="9">    <span class="fu">scp</span> user@unix:/file/location/data.tar.gz .</a>
+<a class="sourceLine" id="cb4-10" title="10">    <span class="fu">gunzip</span> data.tar.gz</a>
+<a class="sourceLine" id="cb4-11" title="11">    <span class="fu">tar</span> -xvf data.tar</a>
+<a class="sourceLine" id="cb4-12" title="12"></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="ex">process</span>:</a>
+<a class="sourceLine" id="cb4-14" title="14">    <span class="fu">mkdir</span> -p code/logs</a>
+<a class="sourceLine" id="cb4-15" title="15">    <span class="ex">Rscript</span> code/process.R</a>
+<a class="sourceLine" id="cb4-16" title="16"></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="ex">load</span>:</a>
+<a class="sourceLine" id="cb4-18" title="18">    <span class="ex">python</span> app.py</a>
+<a class="sourceLine" id="cb4-19" title="19"></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="ex">tweak</span>:</a>
+<a class="sourceLine" id="cb4-21" title="21">    <span class="fu">git</span> commit -m <span class="st">&#39;Tweak&#39;</span></a>
+<a class="sourceLine" id="cb4-22" title="22">    <span class="fu">git</span> push</a></code></pre></div>
 <p>这是一个模板，其实这个过程可以在 R 里面实现，但是 R 要用其他语言的时候，要用<code>system()</code>，有点麻烦。</p>
 <p><a href="https://stat545.com/automation-overview.html" class="uri">https://stat545.com/automation-overview.html</a></p>
 <p>可以参考 <a href="https://github.com/JiaxiangBU/learn_rmd/blob/master/Makefile" class="uri">https://github.com/JiaxiangBU/learn_rmd/blob/master/Makefile</a></p>
@@ -227,39 +230,39 @@ type <code>make all</code> to rerun the entire analysis, which consists of the p
 <div id="usethis-use_make" class="section level1">
 <h1><span class="header-section-number">3</span> usethis use_make</h1>
 <p><code>usethis::use_make()</code></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># h/t to @jimhester and @yihui for this parse block:</span></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="co"># https://github.com/yihui/knitr/blob/dc5ead7bcfc0ebd2789fe99c527c7d91afb3de4a/Makefile#L1-L4</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="co"># Note the portability change as suggested in the manual:</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="co"># https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-portable-packages</span></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="ex">PKGNAME</span> = <span class="kw">`</span><span class="fu">sed</span> -n <span class="st">&quot;s/Package: *\([^ ]*\)/\1/p&quot;</span> DESCRIPTION<span class="kw">`</span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="ex">PKGVERS</span> = <span class="kw">`</span><span class="fu">sed</span> -n <span class="st">&quot;s/Version: *\([^ ]*\)/\1/p&quot;</span> DESCRIPTION<span class="kw">`</span></a>
-<a class="sourceLine" id="cb4-7" title="7"></a>
-<a class="sourceLine" id="cb4-8" title="8"></a>
-<a class="sourceLine" id="cb4-9" title="9"><span class="ex">all</span>: check</a>
-<a class="sourceLine" id="cb4-10" title="10"></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="ex">build</span>:</a>
-<a class="sourceLine" id="cb4-12" title="12">    <span class="ex">R</span> CMD build .</a>
-<a class="sourceLine" id="cb4-13" title="13"></a>
-<a class="sourceLine" id="cb4-14" title="14"><span class="ex">check</span>: build</a>
-<a class="sourceLine" id="cb4-15" title="15">    <span class="ex">R</span> CMD check --no-manual <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>_<span class="va">$(</span><span class="ex">PKGVERS</span><span class="va">)</span>.tar.gz</a>
-<a class="sourceLine" id="cb4-16" title="16"></a>
-<a class="sourceLine" id="cb4-17" title="17"><span class="ex">install_deps</span>:</a>
-<a class="sourceLine" id="cb4-18" title="18">    <span class="ex">Rscript</span> \</a>
-<a class="sourceLine" id="cb4-19" title="19">    -e <span class="st">&#39;if (!requireNamespace(&quot;remotes&quot;) install.packages(&quot;remotes&quot;)&#39;</span> \</a>
-<a class="sourceLine" id="cb4-20" title="20">    -e <span class="st">&#39;remotes::install_deps(dependencies = TRUE)&#39;</span></a>
-<a class="sourceLine" id="cb4-21" title="21"></a>
-<a class="sourceLine" id="cb4-22" title="22"><span class="ex">install</span>: install_deps build</a>
-<a class="sourceLine" id="cb4-23" title="23">    <span class="ex">R</span> CMD INSTALL <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>_<span class="va">$(</span><span class="ex">PKGVERS</span><span class="va">)</span>.tar.gz</a>
-<a class="sourceLine" id="cb4-24" title="24"></a>
-<a class="sourceLine" id="cb4-25" title="25"><span class="ex">clean</span>:</a>
-<a class="sourceLine" id="cb4-26" title="26">    <span class="ex">@rm</span> -rf <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>_<span class="va">$(</span><span class="ex">PKGVERS</span><span class="va">)</span>.tar.gz <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>.Rcheck</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># h/t to @jimhester and @yihui for this parse block:</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co"># https://github.com/yihui/knitr/blob/dc5ead7bcfc0ebd2789fe99c527c7d91afb3de4a/Makefile#L1-L4</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co"># Note the portability change as suggested in the manual:</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co"># https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-portable-packages</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="ex">PKGNAME</span> = <span class="kw">`</span><span class="fu">sed</span> -n <span class="st">&quot;s/Package: *\([^ ]*\)/\1/p&quot;</span> DESCRIPTION<span class="kw">`</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="ex">PKGVERS</span> = <span class="kw">`</span><span class="fu">sed</span> -n <span class="st">&quot;s/Version: *\([^ ]*\)/\1/p&quot;</span> DESCRIPTION<span class="kw">`</span></a>
+<a class="sourceLine" id="cb5-7" title="7"></a>
+<a class="sourceLine" id="cb5-8" title="8"></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="ex">all</span>: check</a>
+<a class="sourceLine" id="cb5-10" title="10"></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="ex">build</span>:</a>
+<a class="sourceLine" id="cb5-12" title="12">    <span class="ex">R</span> CMD build .</a>
+<a class="sourceLine" id="cb5-13" title="13"></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="ex">check</span>: build</a>
+<a class="sourceLine" id="cb5-15" title="15">    <span class="ex">R</span> CMD check --no-manual <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>_<span class="va">$(</span><span class="ex">PKGVERS</span><span class="va">)</span>.tar.gz</a>
+<a class="sourceLine" id="cb5-16" title="16"></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="ex">install_deps</span>:</a>
+<a class="sourceLine" id="cb5-18" title="18">    <span class="ex">Rscript</span> \</a>
+<a class="sourceLine" id="cb5-19" title="19">    -e <span class="st">&#39;if (!requireNamespace(&quot;remotes&quot;) install.packages(&quot;remotes&quot;)&#39;</span> \</a>
+<a class="sourceLine" id="cb5-20" title="20">    -e <span class="st">&#39;remotes::install_deps(dependencies = TRUE)&#39;</span></a>
+<a class="sourceLine" id="cb5-21" title="21"></a>
+<a class="sourceLine" id="cb5-22" title="22"><span class="ex">install</span>: install_deps build</a>
+<a class="sourceLine" id="cb5-23" title="23">    <span class="ex">R</span> CMD INSTALL <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>_<span class="va">$(</span><span class="ex">PKGVERS</span><span class="va">)</span>.tar.gz</a>
+<a class="sourceLine" id="cb5-24" title="24"></a>
+<a class="sourceLine" id="cb5-25" title="25"><span class="ex">clean</span>:</a>
+<a class="sourceLine" id="cb5-26" title="26">    <span class="ex">@rm</span> -rf <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>_<span class="va">$(</span><span class="ex">PKGVERS</span><span class="va">)</span>.tar.gz <span class="va">$(</span><span class="ex">PKGNAME</span><span class="va">)</span>.Rcheck</a></code></pre></div>
 </div>
 <div id="更新-r-项目" class="section level1">
 <h1><span class="header-section-number">4</span> 更新 R 项目</h1>
 <p>直接可以再其他 git bash (RStudio里面的) 就可以更新了。
 或者说不需要打开 RStudio 项目直接用 make 去更新。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="bu">cd</span> ../nCov2019_analysis</a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="fu">make</span> all</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="bu">cd</span> ../nCov2019_analysis</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="fu">make</span> all</a></code></pre></div>
 </div>
 <div id="q-失效" class="section level1">
 <h1><span class="header-section-number">5</span> q() 失效</h1>
@@ -268,26 +271,60 @@ type <code>make all</code> to rerun the entire analysis, which consists of the p
 <div id="missing-separator" class="section level1">
 <h1><span class="header-section-number">6</span> missing separator</h1>
 <p>参考 <a href="https://blog.csdn.net/u010299133/article/details/83895299" class="uri">https://blog.csdn.net/u010299133/article/details/83895299</a></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">Makefile</span>:7: *** missing separator.  Stop.</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">Makefile</span>:7: *** missing separator.  Stop.</a></code></pre></div>
 <p>在相应的行前tab键，很多时候可能是加了空格键。</p>
 </div>
 <div id="处理乱码" class="section level1">
 <h1><span class="header-section-number">7</span> 处理乱码</h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">RScript</span> code/data-validation.R</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">RScript</span> code/data-validation.R</a></code></pre></div>
 <p>不要 <code>.R</code> 写文字，会乱码，用 <code>Rmd</code>。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="st">&quot;表结构是否发生变化，比如错行匹配</span><span class="ch">\n</span><span class="st">&quot;</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="st">    </span><span class="kw">write_lines</span>(report_path, <span class="dt">append =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="st">&quot;表结构是否发生变化，比如错行匹配</span><span class="ch">\n</span><span class="st">&quot;</span> <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">    </span><span class="kw">write_lines</span>(report_path, <span class="dt">append =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="单独调用-make-命令测试" class="section level1">
 <h1><span class="header-section-number">8</span> 单独调用 make 命令测试</h1>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">test</span>:</a>
-<a class="sourceLine" id="cb9-2" title="2"></a>
-<a class="sourceLine" id="cb9-3" title="3">    <span class="ex">RScript</span> code/data-validation.R</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">test</span>:</a>
+<a class="sourceLine" id="cb10-2" title="2"></a>
+<a class="sourceLine" id="cb10-3" title="3">    <span class="ex">RScript</span> code/data-validation.R</a></code></pre></div>
 <p>一条条测试，这样比较快。
 这主要是一个思路问题。</p>
 </div>
 <div id="附录" class="section level1 unnumbered">
 <h1>附录</h1>
+<div id="示例-1" class="section level2">
+<h2><span class="header-section-number">8.1</span> 示例</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">read_lines</span>(<span class="st">&quot;../user_communication_classification/Makefile&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="st">    </span>gluedown<span class="op">::</span><span class="kw">md_fence</span>(<span class="dt">info =</span> <span class="st">&quot;bash&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">run_model</span>:</a>
+<a class="sourceLine" id="cb12-2" title="2"></a>
+<a class="sourceLine" id="cb12-3" title="3">    <span class="ex">RScript</span> code/write_report.R</a>
+<a class="sourceLine" id="cb12-4" title="4">    <span class="ex">RScript</span> code/run-dtm-data.R</a>
+<a class="sourceLine" id="cb12-5" title="5">    <span class="ex">jupyter</span> nbconvert --to script doc2vec_slice_kmeans.ipynb</a>
+<a class="sourceLine" id="cb12-6" title="6">    <span class="ex">python</span> doc2vec_slice_kmeans.py</a>
+<a class="sourceLine" id="cb12-7" title="7">    <span class="fu">rm</span> doc2vec_slice_kmeans.py</a>
+<a class="sourceLine" id="cb12-8" title="8">    <span class="ex">RScript</span> code/run-dtm-output.R</a>
+<a class="sourceLine" id="cb12-9" title="9">    <span class="ex">RScript</span> code/data-validation.R</a>
+<a class="sourceLine" id="cb12-10" title="10">    <span class="ex">RScript</span> code/write_report_final.R</a>
+<a class="sourceLine" id="cb12-11" title="11"></a>
+<a class="sourceLine" id="cb12-12" title="12">    <span class="fu">rm</span> copy.Rmd</a>
+<a class="sourceLine" id="cb12-13" title="13">    <span class="fu">rm</span> analysis/dtm-data.md</a>
+<a class="sourceLine" id="cb12-14" title="14">    <span class="fu">rm</span> analysis/data-validation.md</a>
+<a class="sourceLine" id="cb12-15" title="15">    <span class="fu">rm</span> analysis/data-validation.html</a>
+<a class="sourceLine" id="cb12-16" title="16"></a>
+<a class="sourceLine" id="cb12-17" title="17">    <span class="fu">mv</span> copy.docx output/report.docx</a>
+<a class="sourceLine" id="cb12-18" title="18"></a>
+<a class="sourceLine" id="cb12-19" title="19"><span class="ex">readme</span>:</a>
+<a class="sourceLine" id="cb12-20" title="20"></a>
+<a class="sourceLine" id="cb12-21" title="21">    <span class="ex">Rscript</span> code/build-readme.R</a>
+<a class="sourceLine" id="cb12-22" title="22"></a>
+<a class="sourceLine" id="cb12-23" title="23"><span class="ex">push</span>:</a>
+<a class="sourceLine" id="cb12-24" title="24"></a>
+<a class="sourceLine" id="cb12-25" title="25">    <span class="ex">Rscript</span> code/push.R</a>
+<a class="sourceLine" id="cb12-26" title="26"></a>
+<a class="sourceLine" id="cb12-27" title="27"><span class="ex">copy</span>:</a>
+<a class="sourceLine" id="cb12-28" title="28"></a>
+<a class="sourceLine" id="cb12-29" title="29">    <span class="ex">Rscript</span> code/copy-md.R</a></code></pre></div>
+</div>
 </div>
 <div id="参考文献" class="section level1 unnumbered">
 <h1>参考文献</h1>

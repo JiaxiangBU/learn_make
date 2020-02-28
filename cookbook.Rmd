@@ -22,6 +22,11 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 1. 相关问题提交到
     <a class="github-button" href="https://github.com/JiaxiangBU/tutoring2/issues" data-show-count="true" aria-label="Issue JiaxiangBU/tutoring on GitHub">Issue</a>
 
+```{r}
+library(tidyverse)
+```
+
+
 # 配置
 
 参考 https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows
@@ -175,5 +180,13 @@ test:
 这主要是一个思路问题。
 
 # 附录 {-}
+
+## 示例
+
+```{r results='asis'}
+read_lines("../user_communication_classification/Makefile") %>%
+    gluedown::md_fence(info = "bash")
+```
+
 
 # 参考文献 {-}
