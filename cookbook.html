@@ -24,7 +24,7 @@
 <meta name="author" content="李家翔" />
 
 
-<meta name="date" content="2020-02-28" />
+<meta name="date" content="2020-03-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,9 +136,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path=""><a href="#q-失效"><i class="fa fa-check"></i><b>5</b> q() 失效</a></li>
 <li class="chapter" data-level="6" data-path=""><a href="#missing-separator"><i class="fa fa-check"></i><b>6</b> missing separator</a></li>
 <li class="chapter" data-level="7" data-path=""><a href="#处理乱码"><i class="fa fa-check"></i><b>7</b> 处理乱码</a></li>
-<li class="chapter" data-level="8" data-path=""><a href="#单独调用-make-命令测试"><i class="fa fa-check"></i><b>8</b> 单独调用 make 命令测试</a></li>
+<li class="chapter" data-level="8" data-path=""><a href="#单独调用-make-命令测试"><i class="fa fa-check"></i><b>8</b> 单独调用 make 命令测试</a><ul>
+<li class="chapter" data-level="8.1" data-path=""><a href="#检查-make-执行结果"><i class="fa fa-check"></i><b>8.1</b> 检查 make 执行结果</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path=""><a href="#附录"><i class="fa fa-check"></i>附录</a><ul>
-<li class="chapter" data-level="8.1" data-path=""><a href="#示例-1"><i class="fa fa-check"></i><b>8.1</b> 示例</a></li>
+<li class="chapter" data-level="8.2" data-path=""><a href="#示例-1"><i class="fa fa-check"></i><b>8.2</b> 示例</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path=""><a href="#参考文献"><i class="fa fa-check"></i>参考文献</a></li>
 </ul>
@@ -161,7 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">make Cookbook</h1>
 <p class="author"><em>李家翔</em></p>
-<p class="date"><em>2020-02-28</em></p>
+<p class="date"><em>2020-03-07</em></p>
 </div>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -288,42 +290,74 @@ type <code>make all</code> to rerun the entire analysis, which consists of the p
 <a class="sourceLine" id="cb10-3" title="3">    <span class="ex">RScript</span> code/data-validation.R</a></code></pre></div>
 <p>一条条测试，这样比较快。
 这主要是一个思路问题。</p>
+<div id="检查-make-执行结果" class="section level2">
+<h2><span class="header-section-number">8.1</span> 检查 make 执行结果</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">readr<span class="op">::</span><span class="kw">read_lines</span>(<span class="st">&quot;../tutoring2/Makefile&quot;</span>)</a></code></pre></div>
+<pre><code> [1] &quot;toc:&quot;                                            
+ [2] &quot;&quot;                                                
+ [3] &quot;\tRScript analysis/build_toc.R&quot;                  
+ [4] &quot;&quot;                                                
+ [5] &quot;render:&quot;                                         
+ [6] &quot;&quot;                                                
+ [7] &quot;\tRScript analysis/build_readme.R&quot;               
+ [8] &quot;&quot;                                                
+ [9] &quot;clean:&quot;                                          
+[10] &quot;&quot;                                                
+[11] &quot;\trm README.html&quot;                                
+[12] &quot;&quot;                                                
+[13] &quot;push:&quot;                                           
+[14] &quot;\tgit add .&quot;                                     
+[15] &quot;\tgit commit -m &#39;update, use `push` in Makefile&#39;&quot;
+[16] &quot;\tgit push&quot;                                      
+[17] &quot;&quot;                                                
+[18] &quot;README: toc render clean push&quot;                   
+[19] &quot;&quot;                                                
+[20] &quot;all: README&quot;                                     
+[21] &quot;&quot;                                                
+[22] &quot;copy:&quot;                                           
+[23] &quot;&quot;                                                
+[24] &quot;\tRScript code/copy-md.R&quot;                        </code></pre>
+<p><code>README: toc render clean push</code>先不执行 <code>push</code>，手动执行
+<code>make toc render clean</code> 查看结果。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">file.edit</span>(<span class="st">&quot;README.md&quot;</span>)</a></code></pre></div>
+<p>看下目录更新的效果，再选择<code>make push</code></p>
+</div>
 </div>
 <div id="附录" class="section level1 unnumbered">
 <h1>附录</h1>
 <div id="示例-1" class="section level2">
-<h2><span class="header-section-number">8.1</span> 示例</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">read_lines</span>(<span class="st">&quot;../user_communication_classification/Makefile&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="st">    </span>gluedown<span class="op">::</span><span class="kw">md_fence</span>(<span class="dt">info =</span> <span class="st">&quot;bash&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">run_model</span>:</a>
-<a class="sourceLine" id="cb12-2" title="2"></a>
-<a class="sourceLine" id="cb12-3" title="3">    <span class="ex">RScript</span> code/write_report.R</a>
-<a class="sourceLine" id="cb12-4" title="4">    <span class="ex">RScript</span> code/run-dtm-data.R</a>
-<a class="sourceLine" id="cb12-5" title="5">    <span class="ex">jupyter</span> nbconvert --to script doc2vec_slice_kmeans.ipynb</a>
-<a class="sourceLine" id="cb12-6" title="6">    <span class="ex">python</span> doc2vec_slice_kmeans.py</a>
-<a class="sourceLine" id="cb12-7" title="7">    <span class="fu">rm</span> doc2vec_slice_kmeans.py</a>
-<a class="sourceLine" id="cb12-8" title="8">    <span class="ex">RScript</span> code/run-dtm-output.R</a>
-<a class="sourceLine" id="cb12-9" title="9">    <span class="ex">RScript</span> code/data-validation.R</a>
-<a class="sourceLine" id="cb12-10" title="10">    <span class="ex">RScript</span> code/write_report_final.R</a>
-<a class="sourceLine" id="cb12-11" title="11"></a>
-<a class="sourceLine" id="cb12-12" title="12">    <span class="fu">rm</span> copy.Rmd</a>
-<a class="sourceLine" id="cb12-13" title="13">    <span class="fu">rm</span> analysis/dtm-data.md</a>
-<a class="sourceLine" id="cb12-14" title="14">    <span class="fu">rm</span> analysis/data-validation.md</a>
-<a class="sourceLine" id="cb12-15" title="15">    <span class="fu">rm</span> analysis/data-validation.html</a>
-<a class="sourceLine" id="cb12-16" title="16"></a>
-<a class="sourceLine" id="cb12-17" title="17">    <span class="fu">mv</span> copy.docx output/report.docx</a>
-<a class="sourceLine" id="cb12-18" title="18"></a>
-<a class="sourceLine" id="cb12-19" title="19"><span class="ex">readme</span>:</a>
-<a class="sourceLine" id="cb12-20" title="20"></a>
-<a class="sourceLine" id="cb12-21" title="21">    <span class="ex">Rscript</span> code/build-readme.R</a>
-<a class="sourceLine" id="cb12-22" title="22"></a>
-<a class="sourceLine" id="cb12-23" title="23"><span class="ex">push</span>:</a>
-<a class="sourceLine" id="cb12-24" title="24"></a>
-<a class="sourceLine" id="cb12-25" title="25">    <span class="ex">Rscript</span> code/push.R</a>
-<a class="sourceLine" id="cb12-26" title="26"></a>
-<a class="sourceLine" id="cb12-27" title="27"><span class="ex">copy</span>:</a>
-<a class="sourceLine" id="cb12-28" title="28"></a>
-<a class="sourceLine" id="cb12-29" title="29">    <span class="ex">Rscript</span> code/copy-md.R</a></code></pre></div>
+<h2><span class="header-section-number">8.2</span> 示例</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">read_lines</span>(<span class="st">&quot;../user_communication_classification/Makefile&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="st">    </span>gluedown<span class="op">::</span><span class="kw">md_fence</span>(<span class="dt">info =</span> <span class="st">&quot;bash&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="ex">run_model</span>:</a>
+<a class="sourceLine" id="cb15-2" title="2"></a>
+<a class="sourceLine" id="cb15-3" title="3">    <span class="ex">RScript</span> code/write_report.R</a>
+<a class="sourceLine" id="cb15-4" title="4">    <span class="ex">RScript</span> code/run-dtm-data.R</a>
+<a class="sourceLine" id="cb15-5" title="5">    <span class="ex">jupyter</span> nbconvert --to script doc2vec_slice_kmeans.ipynb</a>
+<a class="sourceLine" id="cb15-6" title="6">    <span class="ex">python</span> doc2vec_slice_kmeans.py</a>
+<a class="sourceLine" id="cb15-7" title="7">    <span class="fu">rm</span> doc2vec_slice_kmeans.py</a>
+<a class="sourceLine" id="cb15-8" title="8">    <span class="ex">RScript</span> code/run-dtm-output.R</a>
+<a class="sourceLine" id="cb15-9" title="9">    <span class="ex">RScript</span> code/data-validation.R</a>
+<a class="sourceLine" id="cb15-10" title="10">    <span class="ex">RScript</span> code/write_report_final.R</a>
+<a class="sourceLine" id="cb15-11" title="11"></a>
+<a class="sourceLine" id="cb15-12" title="12">    <span class="fu">rm</span> copy.Rmd</a>
+<a class="sourceLine" id="cb15-13" title="13">    <span class="fu">rm</span> analysis/dtm-data.md</a>
+<a class="sourceLine" id="cb15-14" title="14">    <span class="fu">rm</span> analysis/data-validation.md</a>
+<a class="sourceLine" id="cb15-15" title="15">    <span class="fu">rm</span> analysis/data-validation.html</a>
+<a class="sourceLine" id="cb15-16" title="16"></a>
+<a class="sourceLine" id="cb15-17" title="17">    <span class="fu">mv</span> copy.docx output/report.docx</a>
+<a class="sourceLine" id="cb15-18" title="18"></a>
+<a class="sourceLine" id="cb15-19" title="19"><span class="ex">readme</span>:</a>
+<a class="sourceLine" id="cb15-20" title="20"></a>
+<a class="sourceLine" id="cb15-21" title="21">    <span class="ex">Rscript</span> code/build-readme.R</a>
+<a class="sourceLine" id="cb15-22" title="22"></a>
+<a class="sourceLine" id="cb15-23" title="23"><span class="ex">push</span>:</a>
+<a class="sourceLine" id="cb15-24" title="24"></a>
+<a class="sourceLine" id="cb15-25" title="25">    <span class="ex">Rscript</span> code/push.R</a>
+<a class="sourceLine" id="cb15-26" title="26"></a>
+<a class="sourceLine" id="cb15-27" title="27"><span class="ex">copy</span>:</a>
+<a class="sourceLine" id="cb15-28" title="28"></a>
+<a class="sourceLine" id="cb15-29" title="29">    <span class="ex">Rscript</span> code/copy-md.R</a></code></pre></div>
 </div>
 </div>
 <div id="参考文献" class="section level1 unnumbered">

@@ -179,6 +179,23 @@ test:
 一条条测试，这样比较快。
 这主要是一个思路问题。
 
+## 检查 make 执行结果
+
+```{r comment=""}
+readr::read_lines("../tutoring2/Makefile")
+```
+
+
+`README: toc render clean push`先不执行 `push`，手动执行
+`make toc render clean` 查看结果。
+
+```r
+file.edit("README.md")
+```
+
+看下目录更新的效果，再选择`make push`
+
+
 # 附录 {-}
 
 ## 示例
